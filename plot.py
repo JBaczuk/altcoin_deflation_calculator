@@ -8,14 +8,14 @@ halving_interval_blocks = 2100000
 init_year = 2018
 
 def calculate_coin_count(blocks):
-    kala_coin_count = []
+    bitcoin_coin_count = []
     block_rewards = calculate_block_rewards(blocks)
     for i, block in enumerate(blocks):
-        if len(kala_coin_count) == 0:
-            kala_coin_count.append(0)
+        if len(bitcoin_coin_count) == 0:
+            bitcoin_coin_count.append(0)
         else:
-            kala_coin_count.append((block_rewards[i-1] * halving_interval_blocks) + kala_coin_count[i-1])
-    return kala_coin_count
+            bitcoin_coin_count.append((block_rewards[i-1] * halving_interval_blocks) + bitcoin_coin_count[i-1])
+    return bitcoin_coin_count
 
 def calculate_block_rewards(blocks):
     block_rewards = []
@@ -42,10 +42,10 @@ print "block reward", calculate_block_rewards(blocks)
 print "coin count", calculate_coin_count(blocks)
 print "years", calculate_years(blocks)
 
-kala_coins = Scatter(
+bitcoin_coins = Scatter(
     x=blocks,
     y=calculate_coin_count(blocks),
-    name='kala_coins'
+    name='bitcoin_coins'
 )
 block_reward = Scatter(
     x=calculate_years(blocks),
@@ -55,10 +55,10 @@ block_reward = Scatter(
     yaxis='y2'
 ) 
 
-data = [kala_coins, block_reward]
+data = [bitcoin_coins, block_reward]
 
 layout = Layout(
-    title='Kala Distribution Schedule',
+    title='Bitcoin Distribution Schedule',
     xaxis=dict(
         title='Blocks',
         titlefont=dict(
