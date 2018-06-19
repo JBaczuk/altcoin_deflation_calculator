@@ -6,16 +6,17 @@ initial_block_reward = 5000
 block_interval_secs = 60 * 1
 halving_interval_blocks = 2100000
 init_year = 2018
+premine = 3000000000
 
 def calculate_coin_count(blocks):
-    bitcoin_coin_count = []
+    altcoin_coin_count = []
     block_rewards = calculate_block_rewards(blocks)
     for i, block in enumerate(blocks):
-        if len(bitcoin_coin_count) == 0:
-            bitcoin_coin_count.append(0)
+        if len(altcoin_coin_count) == 0:
+            altcoin_coin_count.append(premine)
         else:
-            bitcoin_coin_count.append((block_rewards[i-1] * halving_interval_blocks) + bitcoin_coin_count[i-1])
-    return bitcoin_coin_count
+            altcoin_coin_count.append((block_rewards[i-1] * halving_interval_blocks) + altcoin_coin_count[i-1])
+    return altcoin_coin_count
 
 def calculate_block_rewards(blocks):
     block_rewards = []
@@ -42,10 +43,10 @@ print "block reward", calculate_block_rewards(blocks)
 print "coin count", calculate_coin_count(blocks)
 print "years", calculate_years(blocks)
 
-bitcoin_coins = Scatter(
+altcoin_coins = Scatter(
     x=blocks,
     y=calculate_coin_count(blocks),
-    name='bitcoin_coins'
+    name='altcoin_coins'
 )
 block_reward = Scatter(
     x=calculate_years(blocks),
@@ -55,10 +56,10 @@ block_reward = Scatter(
     yaxis='y2'
 ) 
 
-data = [bitcoin_coins, block_reward]
+data = [altcoin_coins, block_reward]
 
 layout = Layout(
-    title='Bitcoin Distribution Schedule',
+    title='Altcoin Distribution Schedule',
     xaxis=dict(
         title='Blocks',
         titlefont=dict(
