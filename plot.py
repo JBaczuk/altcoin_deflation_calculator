@@ -2,11 +2,12 @@ from __future__ import division
 import plotly
 from plotly.graph_objs import Scatter, Layout, Figure
 
-initial_block_reward = 5000 
+initial_block_reward = 4285 
 block_interval_secs = 60 * 1
 halving_interval_blocks = 2100000
 init_year = 2018
 premine = 3000000000
+halving_count = 15 # how many halvings to show on the graph
 
 def calculate_coin_count(blocks):
     altcoin_coin_count = []
@@ -37,7 +38,7 @@ def calculate_years(blocks):
             years.append(init_year + ((blocks[i] * block_interval_secs)/seconds_per_year)) 
     return years 
 
-blocks = range(0, halving_interval_blocks * 13, halving_interval_blocks)
+blocks = range(0, halving_interval_blocks * halving_count, halving_interval_blocks)
 print "blocks", blocks
 print "block reward", calculate_block_rewards(blocks)
 print "coin count", calculate_coin_count(blocks)
