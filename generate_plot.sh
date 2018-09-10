@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python plot.py
+python3 plot.py

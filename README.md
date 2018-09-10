@@ -5,6 +5,10 @@ Creates plotly charts to show altcoin deflation over time
     <img src="https://raw.githubusercontent.com/JBaczuk/altcoin_deflation_calculator/master/example.png" alt="Example Chart">
 </p>
 
+## Dependencies
+Requires plotly
+`$ pip3 install plotly`
+
 ## Usage
 ```
 git clone https://github.com/JBaczuk/altcoin_deflation_calculator.git

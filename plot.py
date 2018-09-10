@@ -38,11 +38,11 @@ def calculate_years(blocks):
             years.append(init_year + ((blocks[i] * block_interval_secs)/seconds_per_year)) 
     return years 
 
-blocks = range(0, halving_interval_blocks * halving_count, halving_interval_blocks)
-print "blocks", blocks
-print "block reward", calculate_block_rewards(blocks)
-print "coin count", calculate_coin_count(blocks)
-print "years", calculate_years(blocks)
+blocks = list(range(0, halving_interval_blocks * halving_count, halving_interval_blocks))
+print("blocks", blocks)
+print("block reward", calculate_block_rewards(blocks))
+print("coin count", calculate_coin_count(blocks))
+print("years", calculate_years(blocks))
 
 altcoin_coins = Scatter(
     x=blocks,
